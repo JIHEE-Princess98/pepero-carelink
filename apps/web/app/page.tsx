@@ -11,7 +11,18 @@ import {
 } from "lucide-react";
 import { Answer, getResult, questions } from "./test-data";
 
-const api = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8080";
+const api = process.env.NEXT_PUBLIC_API_URL;
+const API_TIMEOUT_MS = 8_000;
+
+function fetchWithTimeout(url: string, init?: RequestInit) {
+  const controller = new AbortController();
+  const timeout = window.setTimeout(() => controller.abort(), API_TIMEOUT_MS);
+
+  return fetch(url, { ...init, signal: controller.signal }).finally(() =>
+    window.clearTimeout(timeout),
+  );
+}
+
 type Stage = "intro" | "quiz" | "reveal" | "result";
 export default function Home() {
   const [stage, setStage] = useState<Stage>("intro"),
@@ -30,25 +41,34 @@ export default function Home() {
     },
     [],
   );
-  const save = (final: Answer[]) => {
+  const save = async (final: Answer[]) => {
+    if (!api) return;
+
     const r = getResult(final);
-    fetch(`${api}/results`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        name: name.trim(),
-        code: r.code,
-        flavor: r.flavor,
-      }),
-    })
-      .then((x) => {
-        if (!x.ok) throw Error("save");
-        setSaved(true);
-        return fetch(`${api}/results/count`);
-      })
-      .then((x) => x.json())
-      .then((x) => setStats(x.total))
-      .catch(() => setSaved(false));
+    try {
+      const response = await fetchWithTimeout(`${api}/results`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: name.trim(),
+          code: r.code,
+          flavor: r.flavor,
+        }),
+      });
+      if (!response.ok) throw Error("save");
+
+      const count = await fetchWithTimeout(`${api}/results/count`);
+      if (!count.ok) throw Error("count");
+
+      const data: { total?: unknown } = await count.json();
+      if (typeof data.total !== "number") throw Error("invalid count");
+
+      setSaved(true);
+      setStats(data.total);
+    } catch {
+      setSaved(false);
+      setStats(null);
+    }
   };
   const choose = (a: Answer) => {
     if (choosing) return;
@@ -58,8 +78,8 @@ export default function Home() {
     if (index === questions.length - 1) {
       setStage("reveal");
       setSaved(false);
-      save(next);
       timer.current = setTimeout(() => setStage("result"), 2600);
+      void save(next);
     } else
       setTimeout(() => {
         setIndex((v) => v + 1);
