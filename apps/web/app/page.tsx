@@ -9,7 +9,7 @@ import {
   Share2,
   Sparkles,
 } from "lucide-react";
-import { Answer, getResult, questions } from "./test-data";
+import { Answer, getResult, questions, Result } from "./test-data";
 
 const api = process.env.NEXT_PUBLIC_API_URL;
 const API_TIMEOUT_MS = 8_000;
@@ -29,11 +29,12 @@ export default function Home() {
     [name, setName] = useState(""),
     [index, setIndex] = useState(0),
     [answers, setAnswers] = useState<Answer[]>([]),
+    [result, setResult] = useState<Result | null>(null),
+    [resultError, setResultError] = useState(false),
     [saved, setSaved] = useState(false),
     [stats, setStats] = useState<number | null>(null),
     [choosing, setChoosing] = useState(false);
   const timer = useRef<ReturnType<typeof setTimeout> | null>(null),
-    result = answers.length === questions.length ? getResult(answers) : null,
     q = questions[index];
   useEffect(
     () => () => {
@@ -45,6 +46,7 @@ export default function Home() {
     if (!api) return;
 
     const r = getResult(final);
+    if (!r) return;
     try {
       const response = await fetchWithTimeout(`${api}/results`, {
         method: "POST",
@@ -76,6 +78,9 @@ export default function Home() {
     const next = [...answers.slice(0, index), a];
     setAnswers(next);
     if (index === questions.length - 1) {
+      const finalResult = getResult(next);
+      setResult(finalResult ?? null);
+      setResultError(!finalResult);
       setStage("reveal");
       setSaved(false);
       timer.current = setTimeout(() => setStage("result"), 2600);
@@ -99,6 +104,8 @@ export default function Home() {
     setStage("intro");
     setIndex(0);
     setAnswers([]);
+    setResult(null);
+    setResultError(false);
     setStats(null);
     setSaved(false);
     setChoosing(false);
@@ -342,6 +349,27 @@ export default function Home() {
                   <Share2 size={18} /> 결과 공유
                 </button>
               </div>
+            </motion.section>
+          )}
+          {stage === "result" && !result && resultError && (
+            <motion.section
+              key="result-error"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="py-12"
+            >
+              <h2 className="text-2xl font-black text-[#63374f]">
+                결과를 준비하지 못했어요.
+              </h2>
+              <p className="mt-3 text-sm text-[#9b7287]">
+                다시 시작하면 결과를 다시 계산할 수 있어요.
+              </p>
+              <button
+                onClick={restart}
+                className="shimmer mt-6 rounded-2xl px-6 py-4 font-bold text-white"
+              >
+                <RotateCcw className="mr-2 inline" size={18} /> 다시 하기
+              </button>
             </motion.section>
           )}
         </AnimatePresence>

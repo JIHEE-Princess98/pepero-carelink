@@ -18,8 +18,8 @@ class ResultDto {
   @IsString() @MinLength(1) @MaxLength(20) name!: string;
   @IsString()
   @IsIn([
-    "EPLD", "EPLS", "EPHD", "EPHS", "ELFD", "ELFS", "EHFD", "EHFS",
-    "IPLD", "IPLS", "IPHD", "IPHS", "ILFD", "ILFS", "ILHD", "ILHS",
+    "EPLD", "EPLS", "EPHD", "EPHS", "EFLD", "EFLS", "EFHD", "EFHS",
+    "IPLD", "IPLS", "IPHD", "IPHS", "IFLD", "IFLS", "IFHD", "IFHS",
   ])
   code!: string;
   @IsString() @MaxLength(40) flavor!: string;

@@ -179,7 +179,7 @@ export const results: Record<string, Result> = {
     "사람의 마음과 일정표를 모두 챙기는 다정한 리더예요. 팀의 작은 신호를 놓치지 않고 다음 걸음을 준비합니다. 함께라서 더 멀리 가는 힘을 만들어요.",
     ["팀 케어", "꼼꼼한 일정 관리", "분위기 조성"],
     ["혼자서 걱정을 다 안아요", "거절이 조금 어려워요"],
-    "ILFS 신중한 관찰 해결사",
+    "IFLS 신중한 관찰 해결사",
     "같이 가면 초콜릿도 두 배로 달아요.",
   ),
   EPHS: r(
@@ -191,11 +191,11 @@ export const results: Record<string, Result> = {
     "누구나 편하게 의견을 낼 수 있는 자리를 만드는 타입이에요. 차분한 준비와 따뜻한 조율로 팀을 안정시킵니다. 조용한 배려가 큰 신뢰가 돼요.",
     ["경청", "꼼꼼한 지원", "갈등 완화"],
     ["내 의견을 뒤로 미뤄요", "변화에 적응할 시간이 필요해요"],
-    "ELFD 아이디어 폭주족",
+    "EFLD 아이디어 폭주족",
     "좋은 회의는 모두가 한 번씩 웃는 회의예요.",
   ),
-  ELFD: r(
-    "ELFD",
+  EFLD: r(
+    "EFLD",
     "누드 빼빼로",
     "누드 스파크",
     "아이디어 폭주족",
@@ -206,8 +206,8 @@ export const results: Record<string, Result> = {
     "IPHS 안정적인 서포터",
     "완벽한 첫안보다 재미있는 다음 시도가 좋아요.",
   ),
-  ELFS: r(
-    "ELFS",
+  EFLS: r(
+    "EFLS",
     "쿠키앤크림 빼빼로",
     "크림 레이더",
     "유연한 관찰형 발명가",
@@ -218,8 +218,8 @@ export const results: Record<string, Result> = {
     "IPHD 따뜻한 프로젝트러",
     "좋은 질문 하나가 회의 열 개를 아껴줘요.",
   ),
-  EHFD: r(
-    "EHFD",
+  EFHD: r(
+    "EFHD",
     "블루베리 빼빼로",
     "베리 부스터",
     "공감 폭발 실행 요정",
@@ -230,8 +230,8 @@ export const results: Record<string, Result> = {
     "ILPS 묵직한 완성가",
     "좋은 에너지는 공유할수록 커져요.",
   ),
-  EHFS: r(
-    "EHFS",
+  EFHS: r(
+    "EFHS",
     "치즈 빼빼로",
     "치즈 포근이",
     "말랑한 적응 마스터",
@@ -251,7 +251,7 @@ export const results: Record<string, Result> = {
     "혼자 집중해 계획을 실행으로 완성하는 믿음직한 타입이에요. 조용하지만 필요한 순간 정확한 해답을 꺼냅니다. 흔들림 없는 진행력이 강점이에요.",
     ["집중력", "정확한 실행", "완성도"],
     ["도움을 늦게 요청해요", "표정이 진지해 보일 수 있어요"],
-    "EHFD 공감 폭발 실행 요정",
+    "EFHD 공감 폭발 실행 요정",
     "차분한 한 걸음이 결국 가장 먼 곳까지 가요.",
   ),
   IPLS: r(
@@ -263,7 +263,7 @@ export const results: Record<string, Result> = {
     "정보와 일정을 차곡차곡 정리해 팀의 기준점을 만드는 타입이에요. 급할수록 기본을 지켜 실수를 줄입니다. 당신의 체크리스트는 비밀 병기예요.",
     ["정리력", "신뢰성", "세심한 검토"],
     ["예상 밖 변경이 부담돼요", "칭찬을 속으로만 저장해요"],
-    "EHFS 말랑한 적응 마스터",
+    "EFHS 말랑한 적응 마스터",
     "정리는 미래의 나에게 보내는 다정한 편지예요.",
   ),
   IPHD: r(
@@ -275,7 +275,7 @@ export const results: Record<string, Result> = {
     "조용히 팀을 관찰하다 꼭 필요한 곳에 손을 내미는 타입이에요. 계획과 배려를 함께 챙겨 프로젝트의 빈틈을 메웁니다. 말보다 행동으로 신뢰를 쌓아요.",
     ["세심한 배려", "책임감", "안정적 추진"],
     ["부담을 혼자 안아요", "낯선 자리에서는 워밍업이 필요해요"],
-    "ELFS 유연한 관찰형 발명가",
+    "EFLS 유연한 관찰형 발명가",
     "작은 배려도 일정표에 적어 둘 만큼 소중해요.",
   ),
   IPHS: r(
@@ -287,11 +287,11 @@ export const results: Record<string, Result> = {
     "차분하게 듣고, 필요한 때 조심스럽게 힘을 보태는 든든한 동료예요. 변화가 와도 사람과 상황을 충분히 살핀 뒤 움직입니다. 함께 있으면 마음이 편안해져요.",
     ["경청", "꾸준함", "신중한 배려"],
     ["내 속도를 설명하지 않아요", "결정을 오래 고민해요"],
-    "ELFD 아이디어 폭주족",
+    "EFLD 아이디어 폭주족",
     "서두르지 않아도 당신의 배려는 이미 도착했어요.",
   ),
-  ILFD: r(
-    "ILFD",
+  IFLD: r(
+    "IFLD",
     "다크 초콜릿 빼빼로",
     "다크 해커",
     "고요한 실험 해결사",
@@ -302,8 +302,8 @@ export const results: Record<string, Result> = {
     "EPHS 섬세한 분위기 메이커",
     "일단 해 보고, 더 좋아지면 그게 정답이에요.",
   ),
-  ILFS: r(
-    "ILFS",
+  IFLS: r(
+    "IFLS",
     "누드 빼빼로",
     "누드 스카우트",
     "신중한 관찰 해결사",
@@ -314,8 +314,8 @@ export const results: Record<string, Result> = {
     "EPHD 계획적인 팀 비타민",
     "관찰은 느린 행동이 아니라 정확한 준비예요.",
   ),
-  ILHD: r(
-    "ILHD",
+  IFHD: r(
+    "IFHD",
     "쿠키앤크림 빼빼로",
     "크림 케어봇",
     "다정한 실행가",
@@ -326,8 +326,8 @@ export const results: Record<string, Result> = {
     "EPLS 든든한 전략 조율가",
     "필요한 도움은 가장 달콤한 업무 센스예요.",
   ),
-  ILHS: r(
-    "ILHS",
+  IFHS: r(
+    "IFHS",
     "블루베리 빼빼로",
     "베리 쉼표",
     "섬세한 마음 수호자",
@@ -339,7 +339,7 @@ export const results: Record<string, Result> = {
     "당신의 쉼표 덕분에 팀의 문장이 매끄러워져요.",
   ),
 };
-export function getResult(answers: readonly Answer[]): Result {
+export function getResult(answers: readonly Answer[]): Result | undefined {
   const s: Record<Axis, number> = {
     E: 0,
     I: 0,
