@@ -1,0 +1,100 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+:root {
+  font-family: Arial, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  color: #5b354c;
+  background: #fff0f6;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 15% 10%, #ffe0f1, transparent 35%),
+    radial-gradient(circle at 85% 75%, #fff1bb, transparent 40%), #fff5f8;
+}
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-5deg);
+  }
+  50% {
+    transform: translateY(-18px) rotate(7deg);
+  }
+}
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+@keyframes pop {
+  0% {
+    transform: scale(0.4);
+    opacity: 0;
+  }
+  75% {
+    transform: scale(1.12);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+.float {
+  animation: float 4s ease-in-out infinite;
+}
+.shimmer {
+  background: linear-gradient(110deg, #f858a2 10%, #ffb5d7 40%, #f858a2 70%);
+  background-size: 220% 100%;
+  animation: shimmer 3s linear infinite;
+}
+.pop {
+  animation: pop 0.55s cubic-bezier(0.2, 1.4, 0.4, 1) both;
+}
+.answer-card {
+  transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease, background .18s ease;
+}
+.answer-card:hover { transform: translateY(-4px); border-color: #f472b6; background: #fdf2f8; box-shadow: 0 12px 24px rgba(236,72,153,.14); }
+.answer-card:active { transform: scale(.97); }
+.box-glow { animation: box-glow .65s ease-in-out infinite alternate; filter: drop-shadow(0 0 12px #ffd666); }
+@keyframes box-glow {
+  from { transform: rotate(-7deg) scale(.94); filter: drop-shadow(0 0 8px #ffd666); }
+  to { transform: rotate(7deg) scale(1.08); filter: drop-shadow(0 0 30px #ff88bd); }
+}
+.confetti {
+  position: fixed;
+  top: -10vh;
+  pointer-events: none;
+  z-index: 40;
+  animation: fall var(--duration) linear forwards;
+  left: var(--left);
+  animation-delay: var(--delay);
+}
+@keyframes fall {
+  to {
+    transform: translate(var(--drift), 115vh) rotate(900deg);
+    opacity: 0;
+  }
+}
+button {
+  cursor: pointer;
+}
+button:focus-visible,
+input:focus-visible {
+  outline: 3px solid #b54d87;
+  outline-offset: 3px;
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
